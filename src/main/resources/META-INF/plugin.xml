@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>com.imzhiqiang.aip.stringtoolbox</id>
+    <name>Android String Toolbox</name>
+    <vendor email="dfshizhiqiang@gmail.com" url="http://www.imzhiqiang.com">Zhiqiang</vendor>
+
+    <description><![CDATA[
+      An android string xml toolbox.<br>
+      <h4>Supported features:</h4>
+      <ul>
+        <li>Fix your format arguments in the string resource, for example %s -> %1$s</li>
+        <li>Sort the string xml file</li>
+        <li>Add missing string resources from the default strings.xml</li>
+      </ul>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="FixFormatArgsAction" class="com.imzhiqiang.aip.stringtoolbox.FixFormatArgsAction"
+                text="Fix string format arguments" description="Fix your format arguments in the string resource">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="XmlGenerateToolsGroup"/>
+        </action>
+    </actions>
+</idea-plugin>
