@@ -4,7 +4,7 @@ import java.util.regex.Pattern
 
 object StringFormatArgs {
 
-    private const val formatSpecifier = "%([-#+ 0,(\\<]*)?(\\d+)?(\\.\\d+)?([tT])?([a-zA-Z%])"
+    private const val formatSpecifier = "%([-#+0,(\\<]*)?(\\d+)?(\\.\\d+)?([tT])?([a-zA-Z])"
 
     @JvmStatic
     private val fsPattern = Pattern.compile(formatSpecifier)
@@ -26,6 +26,9 @@ object StringFormatArgs {
             lastGroupEnd = matcher.end()
             sb.append(matcher.group())
             sb.insert(groupStart + groupIndex * 2 + 1, (++groupIndex).toString() + "$")
+        }
+        if (lastGroupEnd > 0) {
+            sb.append(value, lastGroupEnd, value.length)
         }
         return sb.toString()
     }
